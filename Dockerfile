@@ -56,7 +56,7 @@ RUN useradd -ms /bin/bash benlue
 
 # Add files
 ADD tools/.profile /home/benlue/.profile 
-RUN source /home/benlue/.profile 
+RUN home/benlue/.profile 
 RUN chmod 755 /usr/local/bin/*
 
 
