@@ -55,11 +55,14 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
 RUN useradd -ms /bin/bash benlue
 
 # Add files
-ADD tools/.profile /home/benlue/.profile
-RUN source /home/benlue/.profile
+ADD tools/.profile /home/benlue/.profile 
+RUN source /home/benlue/.profile 
+RUN chmod 755 /usr/local/bin/*
+
 
 # Install repo cli
-RUN curl https://storage.googleapis.com/git-repo-downloads/repo > home/benlue/bin/repo \
+#RUN curl https://storage.googleapis.com/git-repo-downloads/repo > home/benlue/bin/repo \
+ADD https://commondatastorage.googleapis.com/git-repo-downloads/repo /usr/local/bin/ \
     chmod a+x home/benlue/bin/repo
 
 # Add folder
