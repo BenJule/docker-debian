@@ -47,30 +47,30 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     unzip \
     openssh-client && \
     apt-get clean
+#    rm -rf /var/lib/apt/lists/* && \
+#    rm -rf /tmp/* && \
+#    rm -rf /var/tmp/*
 
 # Add user
 RUN useradd -ms /bin/bash benlue
-RUN useradd -ms /bin/bash android
-
-# Add folder
-RUN mkdir -p /home/android/bin
-RUN mkdir -p /home/android/workspace
-
 
 # Install repo cli
-RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /home/android/bin/repo \
-    chmod a+x /home/android/bin/repo \
+RUN curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo \
+    chmod a+x ~/bin/repo
+
+# Add folder
+RUN mkdir -p /home/benlue/workspace
 
 # Fetch lineage
-RUN mkdir -p /home/android/workspace/lineage-16.0 && cd /home/android/workspace/lineage-16.0 \
+RUN mkdir -p /home/benlue/workspace/lineage-16.0 && cd /home/benlue/lineage-16.0 \
     repo init --depth=1 -u https://github.com/LineageOS/android.git -b lineage-16.0 \
     repo sync -f --force-sync --force-broken --no-clone-bundle --no-tags -j2
 
 # Set environment variables.
-ENV HOME /home/android
+ENV HOME /home/benlue
 
 # Define working directory.
-WORKDIR /home/android
+WORKDIR /home/benlue
 
 # Define default command.
 CMD ["bash"]
