@@ -47,9 +47,6 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     unzip \
     openssh-client && \
     apt-get clean
-#    rm -rf /var/lib/apt/lists/* && \
-#    rm -rf /tmp/* && \
-#    rm -rf /var/tmp/*
 
 # Add user
 RUN useradd -ms /bin/bash benlue
@@ -63,7 +60,6 @@ RUN mkdir -p /home/android/workspace
 # Install repo cli
 RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /home/android/bin/repo \
     chmod a+x /home/android/bin/repo \
-    chown -R android:android /home/android
 
 # Fetch lineage
 RUN mkdir -p /home/android/workspace/lineage-16.0 && cd /home/android/workspace/lineage-16.0 \
