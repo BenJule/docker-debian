@@ -46,7 +46,7 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     xsltproc \
     unzip \
     openssh-client && \
-    apt-get clean && \
+    apt-get clean
 #    rm -rf /var/lib/apt/lists/* && \
 #    rm -rf /tmp/* && \
 #    rm -rf /var/tmp/*
