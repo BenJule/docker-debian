@@ -3,7 +3,7 @@
 #
 
 # Pull base image.
-FROM debian:stable-slim
+FROM debian:buster
 
 MAINTAINER BenLue <benlue@s3root.ovh>
 ENV DEBIAN_FRONTEND noninteractive
