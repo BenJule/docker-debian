@@ -54,12 +54,17 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
 # Add user
 RUN useradd -ms /bin/bash benlue
 
-# Add folder
-RUN mkdir -p /home/benlue/shared
+# Install repo cli
+RUN curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo \
+    chmod a+x ~/bin/repo
 
-# Add files.
-ADD shared/install_repo.sh /home/benlue/shared/install_repo.sh
-ADD shared/sync_lineage-16.0.sh /home/benlue/shared/sync_lineage-16.0.sh
+# Add folder
+RUN mkdir -p /home/benlue/workspace
+
+# Fetch lineage
+RUN mkdir -p /home/benlue/workspace/lineage-16.0 && cd /home/benlue/lineage-16.0 \
+    repo init --depth=1 -u https://github.com/LineageOS/android.git -b lineage-16.0 \
+    repo sync -f --force-sync --force-broken --no-clone-bundle --no-tags -j2
 
 # Set environment variables.
 ENV HOME /home/benlue
