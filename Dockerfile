@@ -58,7 +58,7 @@ RUN useradd -ms /bin/bash benlue
 ADD tools/.profile /home/benlue/.profile 
 #RUN home/benlue/.profile 
 RUN mkdir -p /usr/local/bin/
-RUN chmod 755 /usr/local/bin/*
+RUN chmod 755 /usr/local/bin/
 
 
 # Install repo cli
