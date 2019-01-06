@@ -55,8 +55,8 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
 RUN useradd -ms /bin/bash benlue
 
 # Install repo cli
-RUN curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo \
-    chmod a+x ~/bin/repo
+RUN curl https://storage.googleapis.com/git-repo-downloads/repo > home/benlue/bin/repo \
+    chmod a+x home/benlue/bin/repo
 
 # Add folder
 RUN mkdir -p /home/benlue/workspace
